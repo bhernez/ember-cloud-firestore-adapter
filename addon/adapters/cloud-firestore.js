@@ -339,7 +339,7 @@ export default RESTAdapter.extend({
       const collectionName = buildCollectionName(snapshot.modelName);
       const reference = db.collection(collectionName).doc(snapshot.id);
 
-      collectionRef = db.collection(url).where(inverse.name, '==', reference);
+      collectionRef = db.collection(buildCollectionName(url)).where(inverse.name, '==', reference);
     } else if (Object.prototype.hasOwnProperty.call(relationship.options, 'buildReference')) {
       collectionRef = relationship.options.buildReference(db, snapshot.record);
     } else {
